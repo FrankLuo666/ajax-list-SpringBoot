@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <link type="text/css" rel="stylesheet" href="css/bootstrap.css">
+    <title>UserList Page</title>
+</head>
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <form th:action="@{/userList}" method="post" th:object="${userForm}"
+                    class="form-horizontal">
+                    <fieldset>
+                        <div class="form-group">
+                            <p>
+                                <div> 处理件数: <input th:value="${piecesNumber}" name="piecesNumber"/></div>
+                                <div> 手续费: <input th:value="${fee}" name="fee"/></div>
+                            </p>
+                        </div>
+                        <div class="form-group" style="background-color: gray;">
+                            <table style="border: 1px solid black;">
+                                <tbody class="col-md-12">
+                                    <tr th:each="user,userStatus:${userForm.userList}" th:object="${userForm}">
+                                        <td>
+                                            <input th:value="${user.id}" th:attr="name='userList['+${userStatus.index}+'].id'"/>
+                                        </td>
+                                        <td>
+                                            <input th:value="${user.name}" th:attr="name='userList['+${userStatus.index}+'].name'"/>
+                                        </td>
+                                        <td>
+                                            <input th:value="${user.age}" th:attr="name='userList['+${userStatus.index}+'].age'"/>
+                                        </td>
+                                        <td>
+                                            <input th:value="${user.career}" th:attr="name='userList['+${userStatus.index}+'].career'"/>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <div class="col-md-12">
+                            <span>
+                                <button type="submit" name="add">add</button>
+                            </span>
+                            <span>
+                                <button type="submit" name="delete">delete</button>
+                            </span>
+                        </div>
+                    </fieldset>
+                </form>
+            </div>
+        </div>
+    </div>
+</body>
+<script type="text/javascript" th:src="@{/js/temp_jQuery3.6.0.js}"></script>
+<script>
+    console.log($("input[name='fee']").val());
+</script>
+</html>
