@@ -2,7 +2,7 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <link type="text/css" rel="stylesheet" href="css/bootstrap.css">
+<!--    <link type="text/css" rel="stylesheet" href="css/bootstrap.css">-->
     <title>UserList Page</title>
 </head>
 <body>
@@ -19,7 +19,7 @@
                             </p>
                         </div>
                         <div class="form-group" style="background-color: gray;">
-                            <table style="border: 1px solid black;">
+                            <table style="border: 1px solid black;" id="userListTable">
                                 <tbody class="col-md-12">
                                     <tr th:each="user,userStatus:${userForm.userList}" th:object="${userForm}">
                                         <td>
@@ -40,10 +40,18 @@
                         </div>
                         <div class="col-md-12">
                             <span>
-                                <button type="submit" name="add">add</button>
+                                <button type="button" id="addOne">add</button>
                             </span>
                             <span>
-                                <button type="submit" name="delete">delete</button>
+                                <button type="button" id="deleteOne">delete</button>
+                            </span>
+                        </div>
+                        <div>
+                            <span>
+                                <button type="submit" name="before">pre page</button>
+                            </span>
+                            <span>
+                                <button type="submit" name="next">submit</button>
                             </span>
                         </div>
                     </fieldset>
@@ -53,6 +61,7 @@
     </div>
 </body>
 <script type="text/javascript" th:src="@{/js/temp_jQuery3.6.0.js}"></script>
+<script type="text/javascript" th:src="@{/js/userListControl.js}"></script>
 <script>
     console.log($("input[name='fee']").val());
 </script>

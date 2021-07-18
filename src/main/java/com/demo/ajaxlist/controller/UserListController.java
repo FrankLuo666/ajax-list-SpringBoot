@@ -19,11 +19,11 @@ public class UserListController {
 
     @RequestMapping("/showList")
     public String initUserListPage(@ModelAttribute("userForm") UserForm userForm,
-           ModelMap modelMap){
+       ModelMap modelMap){
 
-        //for test
-        int piecesNumber = 240;
-        int fee = piecesNumber * 1000;
+        //should search DB; just for test;
+        int piecesNumber = 150;
+        int fee = piecesNumber * 200;
 
         //create User
         UserForm user1 = new UserForm("12364","张三","23","医生");
@@ -34,7 +34,7 @@ public class UserListController {
         userList.add(user2);
         userList.add(user3);
         userForm.setUserList(userList);
-        modelMap.addAttribute("userForm", userForm);
+
         modelMap.addAttribute("piecesNumber", piecesNumber);
         modelMap.addAttribute("fee", fee);
 
@@ -49,9 +49,8 @@ public class UserListController {
      */
     @RequestMapping(value = "/userList", params = "add")
     public String addUserList(@ModelAttribute("userForm") UserForm userForm,
-                              @ModelAttribute("fee") String fee,
-                              @ModelAttribute("piecesNumber") String piecesNumber,ModelMap modelMap, Model model){
-        List<UserForm> list = userForm.getUserList();
+          @ModelAttribute("piecesNumber") String piecesNumber,ModelMap modelMap){
+        /*List<UserForm> list = userForm.getUserList();
         if(list == null){
             list = new ArrayList<>();
         }
@@ -61,7 +60,7 @@ public class UserListController {
             log.info("已到达最大件数.");
         }
         userForm.setUserList(list);
-        model.addAttribute("userForm", userForm);
+        model.addAttribute("userForm", userForm);*/
 
         return "userList";
     }
@@ -70,14 +69,12 @@ public class UserListController {
      * delete
      * @param userForm
      * @param modelMap
-     * @return
+     * @return String
      */
     @RequestMapping(value = "/userList", params = "delete")
-    public String deleteUserList(@ModelAttribute("fee") String fee,
-        @ModelAttribute("piecesNumber") String piecesNumber,
-        @ModelAttribute("userForm") UserForm userForm,
-                                   ModelMap modelMap){
-        List<UserForm> list = userForm.getUserList();
+    public String deleteUserList(@ModelAttribute("userForm") UserForm userForm,
+         ModelMap modelMap){
+        /*List<UserForm> list = userForm.getUserList();
         if(list == null){
             return "userList";
         }
@@ -87,8 +84,38 @@ public class UserListController {
             log.info("不能再减了!");
         }
         userForm.setUserList(list);
-        modelMap.addAttribute("userForm", userForm);
+        modelMap.addAttribute("userForm", userForm);*/
 
         return "userList";
+    }
+
+    /**
+     * to pre page
+     * @param userForm
+     * @param modelMap
+     * @return String
+     */
+    @RequestMapping(value = "/userList", params = "before")
+    public String addUserList(@ModelAttribute("userForm") UserForm userForm,
+          @ModelAttribute("fee") String fee,
+          @ModelAttribute("piecesNumber") String piecesNumber,ModelMap modelMap, Model model){
+        modelMap.addAttribute("piecesNumber", piecesNumber);
+        modelMap.addAttribute("fee", fee);
+        model.addAttribute("userForm", userForm);
+
+        return "hello";
+    }
+
+    /**
+     * to next page
+     * @param userForm
+     * @return String
+     */
+    @RequestMapping(value = "/userList", params = "next")
+    public String deleteUserList(@ModelAttribute("fee") String fee,
+        @ModelAttribute("piecesNumber") String piecesNumber,
+        @ModelAttribute("userForm") UserForm userForm){
+
+        return "complete";
     }
 }
