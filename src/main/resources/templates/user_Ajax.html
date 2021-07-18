@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+<!--    <link type="text/css" rel="stylesheet" href="css/bootstrap.css">-->
+    <title>UserList Page</title>
+</head>
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <form th:action="@{/#}" method="post" class="form-horizontal" th:object="${userBean}">
+                    <fieldset>
+                        <div class="form-group">
+                            <p>
+                                <div id="feedback"></div>
+                            </p>
+                        </div>
+                        <div class="form-group" style="background-color: gray;">
+                            <table style="border: 1px solid black;" id="userListTable">
+                                <tbody class="col-md-12">
+                                    <tr style="border: solid 1px blue;">
+                                        <td>username</td>
+                                        <td>age</td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <input th:value="${userBean.username}" th:attr="name='name'"/>
+                                        </td>
+                                        <td>
+                                            <input th:value="${userBean.age}" th:attr="name='age'"/>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <div class="col-md-12">
+                            <span>
+                                <button type="button" id="Ajax_Test">Ajax Test</button>
+                            </span>
+                        </div>
+                    </fieldset>
+                </form>
+            </div>
+        </div>
+    </div>
+</body>
+<script type="text/javascript" th:src="@{/js/temp_jQuery3.6.0.js}"></script>
+<script type="text/javascript" th:src="@{/js/user_Ajax.js}"></script>
+</html>

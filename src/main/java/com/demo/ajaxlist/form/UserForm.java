@@ -34,9 +34,6 @@ public class UserForm {
     private String age;
     private String career;
 
-//    private String fee;
-//    private String piecesNumber;
-
     private List<UserForm> userList;
 
     @Override

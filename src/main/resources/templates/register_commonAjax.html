@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>User Register</title>
+<!--    <link type="text/css" rel="stylesheet" href="css/bootstrap.css">-->
+<!--    <link rel="stylesheet" href="../css/bootstrap.css" />-->
+</head>
+<body>
+<p></p>
+<div class="form-group col-md-4 col-sm-4">
+    <form autocomplete="off" class="col-md-4 col-sm-4">
+        <div class="">
+            username: <input type="text" id="username">
+            <span id="uSpan"></span>
+        </div>
+        <div class="">
+            password: <input type="password" id="password">
+        </div>
+        <div class="">
+            <input type="submit" value="register" id="button" class="btn-info">
+        </div>
+    </form>
+</div>
+</body>
+<script type="text/javascript" th:src="@{/js/temp_jQuery3.6.0.js}"></script>
+<script type="text/javascript" src="../js/bootstrap.js"></script>
+<script>
+    //1.为用户名绑定失去焦点事件
+    $("#username").blur(function () {
+        let username = $("#username").val();
+        //2.jQuery的通用方式实现AJAX
+        $.ajax({
+            //请求资源路径
+            url:"/register",
+            //是否异步
+            async:true,
+            //请求参数
+            data:"username="+username,
+            //请求方式
+            type:"POST",
+            //数据形式
+            dataType:"text",
+            //请求成功后调用的回调函数
+            success:function (data) {
+                //将响应的数据显示到span标签
+                $("#uSpan").html(data);
+            },
+            //请求失败后调用的回调函数
+            error:function () {
+                alert("操作失败...");
+            }
+        });
+    });
+</script>
+</html>

@@ -16,6 +16,7 @@
                             <p>
                                 <div> 处理件数: <input th:value="${piecesNumber}" name="piecesNumber"/></div>
                                 <div> 手续费: <input th:value="${fee}" name="fee"/></div>
+                                <div id="feedback"></div>
                             </p>
                         </div>
                         <div class="form-group" style="background-color: gray;">
@@ -23,16 +24,16 @@
                                 <tbody class="col-md-12">
                                     <tr th:each="user,userStatus:${userForm.userList}" th:object="${userForm}">
                                         <td>
-                                            <input th:value="${user.id}" th:attr="name='userList['+${userStatus.index}+'].id'"/>
+                                            <input th:value="${user.id}" th:attr="name='id'"/>
                                         </td>
                                         <td>
-                                            <input th:value="${user.name}" th:attr="name='userList['+${userStatus.index}+'].name'"/>
+                                            <input th:value="${user.name}" th:attr="name='name'"/>
                                         </td>
                                         <td>
-                                            <input th:value="${user.age}" th:attr="name='userList['+${userStatus.index}+'].age'"/>
+                                            <input th:value="${user.age}" th:attr="name='age'"/>
                                         </td>
                                         <td>
-                                            <input th:value="${user.career}" th:attr="name='userList['+${userStatus.index}+'].career'"/>
+                                            <input th:value="${user.career}" th:attr="name='career'"/>
                                         </td>
                                     </tr>
                                 </tbody>
@@ -53,6 +54,9 @@
                             <span>
                                 <button type="submit" name="next">submit</button>
                             </span>
+                            <span>
+                                <button type="refresh" name="refresh">refresh</button>
+                            </span>
                         </div>
                     </fieldset>
                 </form>
@@ -61,5 +65,5 @@
     </div>
 </body>
 <script type="text/javascript" th:src="@{/js/temp_jQuery3.6.0.js}"></script>
-<script type="text/javascript" th:src="@{/js/addOrDeleteUser.js}"></script>
+<script type="text/javascript" th:src="@{/js/userList_Ajax.js}"></script>
 </html>
