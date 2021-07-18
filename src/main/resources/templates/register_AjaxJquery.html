@@ -3,28 +3,30 @@
 <head>
     <meta charset="UTF-8">
     <title>用户注册</title>
-    <link type="text/css" rel="stylesheet" href="css/bootstrap.css">
+<!--    <link type="text/css" rel="stylesheet" href="css/bootstrap.css">-->
+<!--    <link rel="stylesheet" href="../css/bootstrap.css" />-->
 </head>
 <body>
 <p></p>
-<div class="form-group col-sm-offset-4 col-xs-offset-4">
-    <form autocomplete="off">
-        <div class="row">
+<div class="form-group col-md-4 col-sm-4">
+    <form autocomplete="off" class="col-md-4 col-sm-4">
+        <div class="">
             姓名: <input type="text" id="username">
             <span id="uSpan"></span>
         </div>
-        <div class="row">
+        <div class="">
             密码: <input type="password" id="password">
         </div>
-        <div class="row">
+        <div class="">
             <input type="submit" value="注册" id="button" class="btn-info">
         </div>
     </form>
 </div>
 </body>
 <script type="text/javascript" th:src="@{/js/temp_jQuery3.6.0.js}"></script>
+<script type="text/javascript" src="../js/bootstrap.js"></script>
 <script>
-    //1.为用户名绑定失去焦点事件
+//1.为用户名绑定失去焦点事件
     $("#username").blur(function(){
     // $("#button").click(function(){
         let username = $("#username").val();
