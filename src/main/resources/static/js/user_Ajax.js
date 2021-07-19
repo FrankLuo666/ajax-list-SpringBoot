@@ -18,6 +18,7 @@ $("#Ajax_Test").click(function (){
         //数据形式
         dataType:"json",
         //请求参数
+        // data:JSON.stringify(userBean),
         data:JSON.stringify(userBean),
         cash:false,
         timeout:60000,
@@ -26,7 +27,8 @@ $("#Ajax_Test").click(function (){
             //将响应的数据显示到span标签
             let json = "<h4>Ajax Response</h4><pre>"
                 + JSON.stringify(data,null,4) + "</pre>";
-            $('#feedback').html(json);
+            let username = json + "<br>username : "+ data.username;
+            $('#feedback').html(username);
             console.log("SUCCESS : ", data);
         },
         //请求失败后调用的回调函数
