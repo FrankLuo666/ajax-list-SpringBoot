@@ -38,4 +38,9 @@ public class PageController {
         model.addAttribute("userBean",new UserBean("zhangsan"));
         return "user_Ajax";
     }
+
+    @RequestMapping(value = "/csvDownloadPage")
+    public String showsvDownloadCPage(){
+        return "csvDownload";
+    }
 }
